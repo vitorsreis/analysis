@@ -1,0 +1,11 @@
+/**
+ * Bundled by jsDelivr using Rollup v2.79.1 and Terser v5.19.2.
+ * Original file: /npm/datatables.net-bs5@1.13.8/js/dataTables.bootstrap5.mjs
+ *
+ * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
+ */
+import a from"jquery";import e from"datatables.net";export{default}from"datatables.net";
+/*! DataTables Bootstrap 5 integration
+ * 2020 SpryMedia Ltd - datatables.net/license
+ */let t=a;t.extend(!0,e.defaults,{dom:"<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row dt-row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",renderer:"bootstrap"}),t.extend(e.ext.classes,{sWrapper:"dataTables_wrapper dt-bootstrap5",sFilterInput:"form-control form-control-sm",sLengthSelect:"form-select form-select-sm",sProcessing:"dataTables_processing card",sPageButton:"paginate_button page-item"}),e.ext.renderer.pageButton.bootstrap=function(a,s,r,l,i,n){var o,d,c,p=new e.Api(a),m=a.oClasses,u=a.oLanguage.oPaginate,g=a.oLanguage.oAria.paginate||{},b=function(e,s){var l,c,f,x,h=function(a){a.preventDefault(),t(a.currentTarget).hasClass("disabled")||p.page()==a.data.action||p.page(a.data.action).draw("page")};for(l=0,c=s.length;l<c;l++)if(x=s[l],Array.isArray(x))b(e,x);else{switch(o="",d="",x){case"ellipsis":o="&#x2026;",d="disabled";break;case"first":o=u.sFirst,d=x+(i>0?"":" disabled");break;case"previous":o=u.sPrevious,d=x+(i>0?"":" disabled");break;case"next":o=u.sNext,d=x+(i<n-1?"":" disabled");break;case"last":o=u.sLast,d=x+(i<n-1?"":" disabled");break;default:o=x+1,d=i===x?"active":""}if(o){var v=-1!==d.indexOf("disabled");f=t("<li>",{class:m.sPageButton+" "+d,id:0===r&&"string"==typeof x?a.sTableId+"_"+x:null}).append(t("<a>",{href:v?null:"#","aria-controls":a.sTableId,"aria-disabled":v?"true":null,"aria-label":g[x],role:"link","aria-current":"active"===d?"page":null,"data-dt-idx":x,tabindex:v?-1:a.iTabIndex,class:"page-link"}).html(o)).appendTo(e),a.oApi._fnBindAction(f,{action:x},h)}}},f=t(s);try{c=f.find(document.activeElement).data("dt-idx")}catch(a){}var x=f.children("ul.pagination");x.length?x.empty():x=f.html("<ul/>").children("ul").addClass("pagination"),b(x,l),void 0!==c&&f.find("[data-dt-idx="+c+"]").trigger("focus")};
+//# sourceMappingURL=/sm/5f97b1ae7b6017db170602da2c7a929cca1292289a4e926d59731b5b49a6997a.map

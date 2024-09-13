@@ -1,0 +1,38 @@
+{
+  "name": "vitorsreis/extend-analysis",
+  "description": "Analysis and Profile of Requests/Server for PHP",
+  "version": "1.0.0",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Vitor Reis",
+      "email": "vitor@d5w.com.br"
+    }
+  ],
+  "keywords": [
+    "performance",
+    "analysis",
+    "profile",
+    "requests",
+    "server",
+    "monitor",
+    "debug",
+    "php"
+  ],
+  "autoload": {
+    "psr-4": {
+      "VSR\\Extend\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=5.6",
+    "ext-json": "*",
+    "ext-pdo": "*",
+    "ext-zlib": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*",
+    "squizlabs/php_codesniffer": "*"
+  }
+}

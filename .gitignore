@@ -1,0 +1,12 @@
+/.idea/
+/vendor/
+composer.lock
+
+/src/Analysis/Dashboard/dist/
+/src/Analysis/Dashboard/node_modules/
+/src/Analysis/Dashboard/package-lock.json
+
+/package-lock.json
+/node_modules/
+
+/exemple/storage/
