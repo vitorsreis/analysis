@@ -8,6 +8,7 @@
 namespace VSR\Extend\Analysis;
 
 use Exception;
+use Throwable;
 use VSR\Extend\Analysis;
 
 class Request
@@ -147,10 +148,9 @@ class Request
     public function save()
     {
         # Stop all
-        while (count($this->parent_id) > 1) {
+        do {
             $this->stop();
-        }
-        $this->stop();
+        } while (count($this->parent_id) > 1);
 
         $request = [
             'key' => $this->key,
@@ -187,8 +187,10 @@ class Request
             $request = isset($this->beforeSave) && is_callable($this->beforeSave)
                 ? call_user_func($this->beforeSave, $request)
                 : $request;
-        } finally {
-            $this->__destruct();
+        } catch (Exception $e) {
+            $this->error($e);
+        } catch (Throwable $e) {
+            $this->error($e);
         }
 
         try {

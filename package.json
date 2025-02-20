@@ -1,6 +1,6 @@
 {
   "name": "extend-analysis",
-  "version": "1.1.0",
+  "version": "1.0.1",
   "description": "Analysis and Profile of Requests/Server for PHP",
   "repository": {
     "type": "git",
