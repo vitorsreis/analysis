@@ -1,0 +1,24 @@
+# This file is part of the VSR Analysis.
+
+# Ignore unnecessary files in the repository
+/.github export-ignore
+/.idea export-ignore
+/docs export-ignore
+/examples export-ignore
+/tests export-ignore
+/vendor export-ignore
+/.gitattributes export-ignore
+/.gitignore export-ignore
+/CONTRIBUTING.md export-ignore
+/README.md export-ignore
+
+# Normalize line endings for text files
+*.php text eol=lf
+*.vue text eol=lf
+*.md  text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.xml text eol=lf
+
+# Set linguist documentation for docs folder
+/docs linguist-documentation
