@@ -43,11 +43,12 @@ composer require vitorsreis/analysis
 
 ## Quick Start
 
+###### Profile example (e.g., index.php)
+
 ```php
-require 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 $storage = new VSR\Analysis\Storage\SQLite(__DIR__ . '/storage/db.sqlite');
-
 $profiler = new VSR\Analysis\Profiler('route-or-script');
 $profiler->setStorage($storage);
 
@@ -58,7 +59,17 @@ $profiler->stop();
 $profiler->save();
 ```
 
----
+###### View example (e.g., viewer.php)
+
+```php
+require_once 'vendor/autoload.php';
+
+$storage = new VSR\Analysis\Storage\SQLite(__DIR__ . '/storage/db.sqlite');
+
+$viewer = new VSR\Analysis\Viewer();
+$viewer->setStorage($storage);
+$viewer->execute();
+```
 
 ---
 
