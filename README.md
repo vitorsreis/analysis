@@ -1,100 +1,72 @@
-# Analysis and Profile of Requests/Server for PHP
+# VSR Analysis
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/vitorsreis/extend-analysis?style=flat-square&label=stable&color=2E9DD3)](https://packagist.org/packages/vitorsreis/extend-analysis)
-[![PHP Version Require](https://img.shields.io/packagist/dependency-v/vitorsreis/extend-analysis/php?style=flat-square&color=777BB3)](https://packagist.org/packages/vitorsreis/extend-analysis)
-[![License](https://img.shields.io/packagist/l/vitorsreis/extend-analysis?style=flat-square&color=418677)](https://github.com/vitorsreis/extend-analysis/blob/master/LICENSE)
-[![Total Downloads](https://img.shields.io/packagist/dt/vitorsreis/extend-analysis?style=flat-square&color=0476B7)](https://packagist.org/packages/vitorsreis/extend-analysis)
-[![Repo Stars](https://img.shields.io/github/stars/vitorsreis/extend-analysis?style=social)](https://github.com/vitorsreis/extend-analysis)
+[![Latest Stable Version](https://img.shields.io/packagist/v/vitorsreis/analysis?style=flat-square&label=stable&color=2E9DD3)](https://packagist.org/packages/vitorsreis/analysis)
+[![PHP Version Required](https://img.shields.io/packagist/dependency-v/vitorsreis/analysis/php?style=flat-square&color=777BB3)](https://packagist.org/packages/vitorsreis/analysis)
+[![License](https://img.shields.io/packagist/l/vitorsreis/analysis?style=flat-square&color=418677)](https://github.com/vitorsreis/analysis/blob/main/LICENSE)
+[![Total Downloads](https://img.shields.io/packagist/dt/vitorsreis/analysis?style=flat-square&color=0476B7)](https://packagist.org/packages/vitorsreis/analysis)
+[![Repo Stars](https://img.shields.io/github/stars/vitorsreis/analysis?style=social)](https://github.com/vitorsreis/analysis)
 
-Simple and powerful monitor of requests/server with interactive and realtime dashboard for a simple analysis and manual
-profile.
-Unit tests have passed on versions: ```5.6```, ```7.4```, ```8.1```, ```8.2``` and  ```8.3```
+Simple and powerful monitor/profiler for PHP applications, featuring an interactive and real-time dashboard. Easily
+track performance, errors, and resource usage for your scripts and APIs.
+
+# TODO ADD BANNER IMAGE
 
 ---
 
-## Install
+## Features
+
+- Real-time interactive dashboard for profiling and monitoring
+- Supports PHP 5.6+
+- Tracks execution time, memory usage, errors, and custom actions
+- Pluggable storage (SQLite + JSON by default)
+- Easy integration with any PHP project (web or CLI)
+- Automatic error and exception logging
+- Extensible and customizable
+
+---
+
+## Requirements
+
+- PHP >= 5.6
+- PDO SQLite extension enabled
+- Composer for installation
+
+---
+
+## Installation
 
 ```bash
-composer require vitorsreis/extend-analysis
+composer require vitorsreis/analysis
 ```
 
-## Request Monitor
+---
 
-#### • Simple start usage
+## Quick Start
 
 ```php
-use VSR\Extend\Analysis;
+require 'vendor/autoload.php';
 
-# Create driver
-$driver = new Analysis\Driver\Standard(__DIR__);
+$storage = new VSR\Analysis\Storage\SQLite(__DIR__ . '/storage/db.sqlite');
 
-# Set driver
-Analysis::setDriver($driver);
+$profiler = new VSR\Analysis\Profiler('route-or-script');
+$profiler->setStorage($storage);
 
-# @param bool $autoSave [optional] Save automatically on shutdown event
-#                       default: true, if false, you need call $requestProfile->save() manually
-global $profile;
-$profile = new Analysis\Request();
+$profiler->start('controller/action');
+// ... code ...
+$profiler->stop();
+
+$profiler->save();
 ```
 
-#### • Adding action to profile tree
+---
 
-Is recommended to use try/catch/finally for capture errors, however Error\Exception is captured automatically.
-Use at strategic points in the code to better build your tree, e.g. caller middleware, model proxy, ...
+---
 
-```php
-global $profile;
-try {
-    $profile->start(/* profile_name */); # up level, start action monitor
-    // your code
-} catch (Throwable $e) {
-    $profile->error($e); # register error in current level
-    // your code
-} finally {
-    $extra = ...; // [optional] extra info about action
-    $profile->stop($extra || null); # down level, end action monitor
-}
-```
+### Navigation
 
-#### • Adding extra info about request
-
-```php
-$requestProfile->extra(...);
-```
-
-#### • Capture before save
-
-You can capture the request before save and cancel it if necessary or remove some data.
-Use "return false" to cancel save.
-
-```php
-global $requestProfile;
-$requestProfile->onBeforeSave(function (array $request) {
-    # Toleration of 1000 actions, 300ms of duration and not error
-    if ($request['profile_count'] < 1000 && $request['duration'] < .300 && !$request['error']) {
-        # Remove debug fields to save space in database
-        $fields = [
-            'referer',
-            'useragent',
-            'get',
-            'post',
-            'raw_post',
-            'files',
-            'cookies',
-            'server',
-            'headers', 
-            'inc_files',
-            'error',
-            'extra',
-            'profile'
-        ];
-        foreach ($fields as $field) {
-            $request[$field] = null;
-        }
-    }
-    return $request;
-});
-```
-
-# Server Monitor
-Exemple of usage in [examples/serverTop.php](examples/serverTop.php)
+- [Profiler Documentation](docs/Profiler.md)
+- [Viewer Documentation](docs/Viewer.md)
+- [Server Documentation](docs/Server.md)
+- [Contributing Guidelines](CONTRIBUTING.md)
+- [License (MIT)](LICENSE)
+- [Support / Issues](https://github.com/vitorsreis/analysis/issues)
