@@ -1,12 +1,8 @@
-/.idea/
-/vendor/
-composer.lock
+# This file is part of the VSR Analysis.
 
-/src/Analysis/Dashboard/dist/
-/src/Analysis/Dashboard/node_modules/
-/src/Analysis/Dashboard/package-lock.json
-
+/.idea
+/exemple/storage
+/node_modules
+/vendor
+/composer.lock
 /package-lock.json
-/node_modules/
-
-/exemple/storage/
