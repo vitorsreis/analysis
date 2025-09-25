@@ -49,6 +49,7 @@ composer require vitorsreis/analysis
 require_once 'vendor/autoload.php';
 
 $storage = new VSR\Analysis\Storage\SQLite(__DIR__ . '/storage/db.sqlite');
+
 $profiler = new VSR\Analysis\Profiler('route-or-script');
 $profiler->setStorage($storage);
 
