@@ -1,9 +1,10 @@
 {
-  "name": "vitorsreis/extend-analysis",
-  "description": "Analysis and Profile of Requests/Server for PHP",
-  "version": "1.0.1",
+  "name": "vitorsreis/analysis",
+  "description": "Monitor/Profiler for PHP",
+  "version": "2.0.0",
   "type": "library",
   "license": "MIT",
+  "homepage": "https://github.com/vitorsreis/analysis",
   "authors": [
     {
       "name": "Vitor Reis",
@@ -12,7 +13,7 @@
   ],
   "keywords": [
     "performance",
-    "analysis",
+    "analyzer",
     "profile",
     "requests",
     "server",
@@ -22,17 +23,20 @@
   ],
   "autoload": {
     "psr-4": {
-      "VSR\\Extend\\": "src/"
+      "VSR\\Analysis\\": "src/"
     }
   },
   "require": {
     "php": ">=5.6",
-    "ext-json": "*",
-    "ext-pdo": "*",
-    "ext-zlib": "*"
+    "ext-json": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "*",
-    "squizlabs/php_codesniffer": "*"
+    "phpunit/phpunit": "^5.7",
+    "squizlabs/php_codesniffer": "^3.13",
+    "vitorsreis/phpunit-dispatcher": "1.0.0"
+  },
+  "suggest": {
+    "ext-pdo": "For use SQLite database storage",
+    "ext-zlib": "For use gzip compression"
   }
 }
